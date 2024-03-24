@@ -1,0 +1,31 @@
+﻿@model RoleViewMOdel 
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit @Model.RoleName </h1>
+
+<form>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Id"></label>
+        <input type="text"  class="form-control" asp-for="Id">
+        <span asp-validation-for="Id" class="alert-danger mt-1"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="RoleName"></label>
+        <input type="text"  class="form-control" id="exampleInputPassword1" asp-for="RoleName">
+        <span asp-validation-for="RoleName" class=" alert-danger mt-1"></span>
+    </div>
+
+
+</form>
+
+<input type="submit" value="Save" />
+<a asp-action="Index" class="btn btn-light">Back to Index</a>
+
+
+
+
+
+

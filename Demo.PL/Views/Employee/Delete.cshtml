@@ -1,0 +1,20 @@
+﻿@using Demo.PL.ViewModels;
+@model EmployeeViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete @Model.Name</h1> 
+
+<form asp-action="Delete" enctype="multipart/form-data" asp-route-id="@Model.Id">
+    <partial name="partialViews/DetailsDeletePartialview" />
+
+    <button type="submit" class="btn btn-danger">Delete</button> 
+
+    <button class=" btn btn-primary " asp-action="Index">Cancel</button>
+</form>
+@*
+<partial name="partialViews/DetailsDeletePartialview" />*@
+
+
+

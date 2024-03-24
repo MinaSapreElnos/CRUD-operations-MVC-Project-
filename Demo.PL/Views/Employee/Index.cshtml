@@ -1,0 +1,95 @@
+﻿@using Demo.PL.ViewModels;
+
+
+@model IEnumerable<EmployeeViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@*@if (TempData["createMassage"] is not null)
+{
+    <div class="alert alert-success text-center w-50 m-auto Calert ">
+        @TempData["createMassage"]
+    </div>
+}*@
+
+
+<a asp-action="Create" class="btn btn-success d-block m-auto w-50 mt-3">Create New Employee </a>
+
+<h1 class="text-center"> All Employees  </h1> 
+
+<div class="p-4">
+    <form class="d-flex" asp-action="Index">
+        <input type="text" placeholder="Employee Name" class="col-md-10 form-control" name="SearchSrting"  />
+        <button type="submit" class="btn btn-primary col-md-2">Search</button>
+    </form>
+</div>
+
+
+@if(Model.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr> 
+                <th scope="col">@Html.DisplayNameFor(E=>E.Name)</th>  
+                <th scope="col"> @Html.DisplayNameFor(E=>E.Age)</th>
+                <th scope="col"> @Html.DisplayNameFor(E=>E.selary)</th>
+                <th scope="col"> @Html.DisplayNameFor(E=>E.Department)</th>
+                <th scope="col"> @Html.DisplayNameFor(E=>E.Address)</th>
+                <th scope="col"> @Html.DisplayNameFor(E=>E.Email)</th>
+                <th scope="col"> @Html.DisplayNameFor(E=>E.PhoneNumber)</th>
+                <th scope="col"> @Html.DisplayNameFor(E=>E.HireDate)</th>
+                <th scope="col"> @Html.DisplayNameFor(E=>E.IsActive)</th>
+                <th>Detils</th>
+                <th>Update</th>
+                <th>Delete</th> 
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach ( var Emp in Model)
+            {
+                <tr>
+                    <td>@Emp.Name</td>
+                    <td>@Emp.Age</td>
+                    <td>@Html.DisplayFor(E=>Emp.selary)</td>
+                    <td>@Html.DisplayFor(E=>Emp.Department.Name)</td>
+                    <td>@Emp.Address</td>
+                    <td>@Html.DisplayFor(E=>Emp.Email)</td>  
+                    <td>@Emp.PhoneNumber</td>
+                    <td>@Emp.HireDate</td>
+                    <td>
+                        @if (@Emp.IsActive == true)
+                        {
+                            <i class="fa-solid fa-circle" style="color:green"></i>
+                        }else
+                        {
+                            <i class="fa-solid fa-circle" style="color:red"></i>
+                        }
+                    </td>
+
+                    <partial name="_ButtonPartialView"  model="@Emp.Id.ToString()"/>  
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="mt-5 alert alert-warning mt-3 text-center">
+        <h2>There Is No Employee </h2>
+    </div>
+}
+
+@*<script type="text/javascript">
+    setTimeout(function () {
+        var Elment = document.querySelector(".Calert")
+        console.log(Elment)
+        Elment.classList.add("d-none")
+    }, 5000)
+
+
+</script>*@
+
+

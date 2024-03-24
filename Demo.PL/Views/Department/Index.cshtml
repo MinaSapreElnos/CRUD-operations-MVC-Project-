@@ -1,0 +1,80 @@
+﻿
+
+@model IEnumerable<Department> 
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+    @if (TempData["massage"] is not null)
+    {
+    <div class="alert alert-success text-center w-50 m-auto Calert " >
+        @TempData["massage"]
+        </div>
+    }
+
+
+
+
+
+<a asp-action="Create" class="btn btn-success d-block m-auto w-50 mt-3">Create New Department</a>
+
+@{
+    if (Model.Count() != 0) 
+    {
+        <h1 class="text-center"> All Departments </h1>
+        <br />
+
+        <table class="table table-striped mt-4 ">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(D=>D.code)</th>
+                    <th scope="col">@Html.DisplayNameFor(D=>D.Name)</th>
+                    <th scope="col"> @Html.DisplayNameFor(D=>D.DateOfCreation)</th>
+                    <th>Details</th>
+                    <th>Update</th>
+                    <th> Delete</th>
+
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach(var deprtment in Model)
+                {
+                    <tr>
+                    <td>@deprtment.code</td>
+                    <td>@deprtment.Name</td>
+                    <td>@deprtment.DateOfCreation</td>
+                        <partial name="_ButtonPartialView" model="@deprtment.Id.ToString()" />
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="mt-5 alert alert-warning mt-3 text-center ">
+            <h2 > There Is No Department  </h2>
+        </div>
+    }
+}
+
+
+
+@section ValidationSection{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script type="text/javascript">
+    setTimeout(function () {
+        var Elment = document.querySelector(".Calert")
+        console.log(Elment) 
+        Elment.classList.add("d-none")
+    }, 5000) 
+
+  
+</script>
+
+                        

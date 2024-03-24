@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RoleViewMOdel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a class ="btn btn-outline-success mb-3" asp-action="Create"> Add New Role</a>
+<br />
+
+@if (Model.Count() > 0)
+{
+
+    <table class="table table-striped table-hover mt-5">
+
+        <thead>
+            <tr>
+                <td>@Html.DisplayNameFor(U => U.Id)</td>
+                <td>@Html.DisplayNameFor(U => U.RoleName)</td>
+                <td>Details</td>
+                <td>Edit</td>
+                <td>Delete</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Role in Model)
+            {
+                <tr>
+                    <td>@Role.Id</td>
+                    <td>@Role.RoleName</td>
+
+
+                    <partial name="_ButtonPartialView" model="@Role.Id">
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div>
+        <h1 class="alert-info text-center">There Is No Users</h1> 
+    </div>
+
+}

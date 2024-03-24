@@ -1,0 +1,26 @@
+﻿@using Demo.PL.ViewModels;
+@model EmployeeViewModel 
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1  >Edit On @Model.Name</h1>
+
+<form asp-action="Edit" class=" mt-3 ">
+
+    <partial name="partialViews/CreateEditPartialView" /> 
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+
+    <a asp-action="Index" asp-controller="Employee" class="btn btn-light"> View All Employee  </a>
+</form>
+
+
+
+@section ValidationSection{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

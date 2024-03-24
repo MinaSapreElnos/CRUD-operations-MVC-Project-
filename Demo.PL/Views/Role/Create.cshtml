@@ -1,0 +1,23 @@
+﻿@model RoleViewMOdel 
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create New Role </h1>
+
+<form asp-action="Create">
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="RoleName"></label>
+        <input type="text" class="form-control" asp-for="RoleName">
+        <span asp-validation-for="RoleName" class="alert-danger mt-1"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <a asp-action="Index" asp-controller="Role" class="btn btn-light"> View All Department  </a>
+</form>
+
+
+

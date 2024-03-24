@@ -1,0 +1,16 @@
+﻿@using Demo.PL.ViewModels;
+@model EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details @Model.Name</h1>
+
+
+<partial name="partialViews/DetailsDeletePartialview" /> 
+
+
+
+<a asp-action="Index" asp-controller="Employee" class="btn btn-light"> View All Employee  </a> 
+
